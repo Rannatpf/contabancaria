@@ -18,9 +18,9 @@ public class Menu {
 		
 		ContaController contas = new ContaController();
 		
-		int opcao, numero, agencia, tipo, aniversario = 0;
+		int opcao, numero, agencia, tipo, aniversario, numeroDestino;
 		String titular;
-		float saldo, limite;
+		float saldo, limite, valor;
 		
 		System.out.println("\nCriar Contas\n");
 		
@@ -103,6 +103,7 @@ public class Menu {
 				 }
 				 case 2 -> {
 					 System.out.println("Digite o dia do Aniversario da Conta: ");
+					 aniversario = leia.nextInt();
 					 contas.cadastrar(new ContaPoupanca(contas.gerarNumero(), agencia, tipo, titular, saldo, aniversario));
 				   }
 				}
@@ -170,17 +171,47 @@ public class Menu {
 				keyPress();
                  break;
 			case 6:
-				System.out.println(Cores.TEXT_WHITE +"\n Sacar\n\n");
+				System.out.println(Cores.TEXT_WHITE +"\n Saque\n\n");
+				System.out.println("Digite o número da conta: ");
+				numero = leia.nextInt();
+				
+				do {
+					System.out.println("Digite o valor do Saque(R$): ");
+					valor = leia.nextFloat();
+				}while(valor <= 0);
+						
+				contas.sacar(numero,  valor);
 				
 				keyPress();
 				break;
              case 7:
-				System.out.println(Cores.TEXT_WHITE +"\n Depositar\n\n");
+				System.out.println(Cores.TEXT_WHITE +"\n Depósito\n\n");
+				System.out.println("Digite o número da conta: ");
+				numero = leia.nextInt();
+				
+				do {
+					System.out.println("Digite o valor do Depósito (R$) ");
+					valor = leia.nextFloat();
+				}while(valor <= 0);
+				
+				contas.depositar(numero,  valor);
 				
 				keyPress();
 				break;
              case 8:
-				System.out.println(Cores.TEXT_WHITE +"\n Transferir");
+				System.out.println(Cores.TEXT_WHITE +"\n Transferência entre contas\n\n");
+				System.out.println("Digite o número da Conta Origem: ");
+				numero = leia.nextInt();
+				System.out.println("Digite o Número da Conta de Destino: ");
+				numeroDestino = leia.nextInt();
+				
+				do {
+					System.out.println("Digite o Valor da Tranferência (R$): ");
+					valor = leia.nextFloat();
+				}while(valor <= 0);
+				
+				contas.transferir(numero,  numeroDestino,  valor);
+								
 				
 				keyPress();
 				break;
