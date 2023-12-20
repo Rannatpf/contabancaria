@@ -15,14 +15,7 @@ public class Menu {
 
 		int opcao;
 
-        // Teste da Classe Conta
-		Conta c1 = new Conta(3, 123, 1, "Mariana", 500000.0f);
-		c1.visualizar();
-		c1.sacar(12000.0f);
-		c1.visualizar();
-		c1.depositar(5000.0f);
-		c1.visualizar();
-        
+     
 		// Teste da Classe Conta Corrente
 		ContaCorrente cc1 = new ContaCorrente(1, 123, 1, "José da Silva", 0.0f, 1000.0f);
 		cc1.visualizar();
